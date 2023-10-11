@@ -2,20 +2,20 @@
 import { trpc } from "@/app/_trpc/client";
 
 export default function TodoList() {
-  const trpcContext = trpc.useContext();
+  const utils = trpc.useContext();
   const { data, isLoading, isError } = trpc.todo.getTodos.useQuery();
   const addTodo = trpc.todo.addTodo.useMutation({
     onSuccess: () => {
-      trpcContext.todo.getTodos.invalidate();
+      utils.todo.getTodos.invalidate();
     },
   });
   const deleteTodo = trpc.todo.deleteTodo.useMutation({
     onSuccess: () => {
-      trpcContext.todo.getTodos.invalidate();
+      utils.todo.getTodos.invalidate();
     },
     onError: (e) => {
       alert(e);
-      trpcContext.todo.getTodos.invalidate();
+      utils.todo.getTodos.invalidate();
     },
   });
   return (
