@@ -1,4 +1,4 @@
-import TrpcProvider from "@/components/trpc-provider";
+import TrpcProvider from "@/trpc/trpc-provider";
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";

@@ -1,5 +1,5 @@
 "use client";
-import { trpc } from "@/app/_trpc/client";
+import { trpc } from "@/trpc/client";
 
 export default function TodoList() {
   const utils = trpc.useContext();
@@ -15,7 +15,6 @@ export default function TodoList() {
     },
     onError: (e) => {
       alert(e);
-      utils.todo.getTodos.invalidate();
     },
   });
   return (

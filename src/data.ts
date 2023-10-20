@@ -1,3 +1,4 @@
+// Mock data
 export const todos: string[] = [];
 
 export type User = { name: string; role: "admin" | "user" };

@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { adminProcedure, publicProcedure, router } from "./init-trpc";
+import { adminProcedure, publicProcedure, router } from "../init-trpc";
 import { todos } from "@/data";
 export const todoRouter = router({
   getTodos: publicProcedure.query(async () => {

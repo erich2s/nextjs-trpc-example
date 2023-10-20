@@ -1,9 +1,10 @@
-// init trpc
+// Init trpc
 import { users } from "@/data";
 import { TRPCError, initTRPC } from "@trpc/server";
 
 const t = initTRPC.create();
 
+// Auth middleware example
 export const middleware = t.middleware;
 export const isAdmin = middleware(async (opts) => {
   const user = users[0];
@@ -11,7 +12,7 @@ export const isAdmin = middleware(async (opts) => {
     console.log(`user ${user.name} is not admin`);
     throw new TRPCError({
       code: "UNAUTHORIZED",
-      message: `${user.name}没有权限`,
+      message: `${user.name} is not admin`,
     });
   }
   return opts.next({
@@ -21,6 +22,8 @@ export const isAdmin = middleware(async (opts) => {
   });
 });
 
-export const router = t.router;
+// Procedure definitions
 export const publicProcedure = t.procedure;
 export const adminProcedure = t.procedure.use(isAdmin);
+
+export const router = t.router;

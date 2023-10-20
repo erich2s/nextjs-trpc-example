@@ -1,8 +1,8 @@
-// 整合并导出
+// Put all router definitions in one file
 import { router } from "./init-trpc";
 
-import { userRouter } from "./userRouter";
-import { todoRouter } from "./todoRouter";
+import { userRouter } from "./routers/userRouter";
+import { todoRouter } from "./routers/todoRouter";
 
 export const appRouter = router({
   user: userRouter, // put procedures under "user" namespace
